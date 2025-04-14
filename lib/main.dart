@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talabi/core/utils/theme/app_theme.dart';
 import 'package:talabi/views/auth/ui/login_page.dart';
 
 void main() {
@@ -14,10 +15,7 @@ class Talabi extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Talabi',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.mainTheme,
       home: const LoginPage(),
     );
   }

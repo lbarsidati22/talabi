@@ -1,21 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
 import 'package:talabi/core/widgets/label_with_text_feild.dart';
 import 'package:talabi/core/widgets/main_bottom.dart';
-import 'package:talabi/views/auth/ui/forget_Password_page.dart';
-import 'package:talabi/views/auth/ui/register_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final userNameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -38,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: size.height * 0.1,
                       ),
                       Text(
-                        'Welcome Back !',
+                        'Welcome to Talabi',
                         style:
                             Theme.of(context).textTheme.headlineLarge!.copyWith(
                                   fontWeight: FontWeight.w500,
@@ -49,6 +47,11 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Column(
                         children: [
+                          LableWithTextFeild(
+                              hintText: 'Enter youe Name',
+                              icon: Icons.person,
+                              controller: userNameController,
+                              lable: 'User'),
                           LableWithTextFeild(
                               hintText: 'Enter youe email',
                               icon: Icons.email,
@@ -64,40 +67,17 @@ class _LoginPageState extends State<LoginPage> {
                             height: 10,
                           ),
                           MainBottom(
-                            text: 'Login',
+                            text: 'Register',
                             onTap: () {
                               if (formKey.currentState!.validate()) {
                               } else {}
                             },
                           ),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ForgetPasswordPage(),
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                'Forget Password',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColors.primaryColor,
-                                    ),
-                              ),
-                            ),
-                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Don\'t have an Account ?',
+                                'Already have an Account ?',
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleMedium!
@@ -107,15 +87,10 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => RegisterPage(),
-                                    ),
-                                  );
+                                  Navigator.pop(context);
                                 },
                                 child: Text(
-                                  'Register',
+                                  'Login',
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
