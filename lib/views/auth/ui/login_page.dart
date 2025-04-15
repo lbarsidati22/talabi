@@ -5,6 +5,7 @@ import 'package:talabi/core/widgets/label_with_text_feild.dart';
 import 'package:talabi/core/widgets/main_bottom.dart';
 import 'package:talabi/views/auth/ui/forget_Password_page.dart';
 import 'package:talabi/views/auth/ui/register_page.dart';
+import 'package:talabi/views/nav_bar/ui/nav_bar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -149,7 +150,14 @@ class _LoginPageState extends State<LoginPage> {
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => NavBar(),
+                                    ),
+                                  );
+                                },
                                 child: Icon(
                                   Icons.chevron_right_sharp,
                                   color: AppColors.white,

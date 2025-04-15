@@ -3,6 +3,7 @@ import 'package:talabi/core/utils/theme/app_colors.dart';
 
 class AppTheme {
   static ThemeData get mainTheme => ThemeData(
+        // scaffoldBackgroundColor: AppColors.white,
         fontFamily: 'OpenSans',
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
