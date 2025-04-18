@@ -4,19 +4,19 @@ import 'package:talabi/core/utils/theme/app_colors.dart';
 class LableWithTextFeild extends StatefulWidget {
   final String hintText;
 
-  final IconData icon;
+  final IconData? icon;
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
 
-  final String lable;
+  final String? lable;
   // final bool isSecured = false;
   // final Widget? sufIcon;
   const LableWithTextFeild({
     super.key,
     required this.hintText,
-    required this.icon,
-    required this.controller,
-    required this.lable,
+    this.icon,
+    this.controller,
+    this.lable,
   });
 
   @override
@@ -31,7 +31,7 @@ class _LableWithTextFeildState extends State<LableWithTextFeild> {
       children: [
         SizedBox(height: 10),
         Text(
-          widget.lable,
+          widget.lable ?? '',
           style: Theme.of(context).textTheme.titleMedium!.copyWith(
                 fontWeight: FontWeight.w600,
               ),

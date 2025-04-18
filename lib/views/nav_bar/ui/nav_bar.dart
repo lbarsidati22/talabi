@@ -25,6 +25,7 @@ class NavBar extends StatelessWidget {
         builder: (context, state) {
           final navBarCubit = BlocProvider.of<NavBarCubit>(context);
           return Scaffold(
+            appBar: AppBar(),
             body: Padding(
               padding: const EdgeInsets.all(8.0),
               child: views[navBarCubit.currentIndex],

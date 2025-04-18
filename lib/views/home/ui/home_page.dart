@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
 import 'package:talabi/views/home/ui/widgets/category_list.dart';
+import 'package:talabi/core/widgets/prudact_item.dart';
+import 'package:talabi/views/home/ui/widgets/product_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -81,7 +82,22 @@ class HomePage extends StatelessWidget {
         SizedBox(
           height: size.height * 0.021,
         ),
+        //Category list
         CategoriesList(size: size),
+        SizedBox(
+          height: size.height * 0.021,
+        ),
+        //prudact Item
+        Text(
+          'Products Recommended',
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                fontWeight: FontWeight.w500,
+              ),
+        ),
+        SizedBox(
+          height: size.height * 0.012,
+        ),
+        ProductList(),
       ],
     );
   }

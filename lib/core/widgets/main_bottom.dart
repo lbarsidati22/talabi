@@ -3,6 +3,7 @@ import 'package:talabi/core/utils/theme/app_colors.dart';
 
 class MainBottom extends StatelessWidget {
   final double height;
+  final double width;
   final VoidCallback? onTap;
   final Color backgroundColor;
   final String? text;
@@ -13,6 +14,7 @@ class MainBottom extends StatelessWidget {
     this.height = 55,
     this.onTap,
     this.backgroundColor = AppColors.primaryColor,
+    this.width = double.infinity,
     this.text,
   }) {
     assert(text != null || isLeading == true);
@@ -22,7 +24,7 @@ class MainBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
-      width: double.infinity,
+      width: width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
