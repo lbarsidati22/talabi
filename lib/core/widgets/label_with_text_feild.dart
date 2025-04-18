@@ -7,13 +7,17 @@ class LableWithTextFeild extends StatefulWidget {
   final IconData? icon;
 
   final TextEditingController? controller;
+  final TextInputType? keyType;
 
   final String? lable;
-  // final bool isSecured = false;
-  // final Widget? sufIcon;
+  final bool? isSecured;
+  final Widget? sufIcon;
   const LableWithTextFeild({
     super.key,
+    this.sufIcon,
+    this.isSecured,
     required this.hintText,
+    this.keyType,
     this.icon,
     this.controller,
     this.lable,
@@ -38,11 +42,11 @@ class _LableWithTextFeildState extends State<LableWithTextFeild> {
         ),
         // SizedBox(height: 10),
         TextFormField(
-          validator: (value) => value == null || value.isEmpty
-              ? '${widget.lable} Cannot be empty '
-              : null,
+          keyboardType: widget.keyType,
+          validator: (value) =>
+              value == null || value.isEmpty ? 'Cannot be empty ' : null,
           controller: widget.controller,
-          // obscureText: widget.isSecured,
+          obscureText: widget.isSecured ?? false,
           decoration: InputDecoration(
             errorBorder: OutlineInputBorder(
               borderSide: BorderSide(
@@ -54,16 +58,7 @@ class _LableWithTextFeildState extends State<LableWithTextFeild> {
               widget.icon,
               color: AppColors.primaryColor,
             ),
-            // suffixIcon: IconButton(
-            //   onPressed: () {
-            //     setState(() {
-            //       widget.isSecured != widget.isSecured;
-            //     });
-            //   },
-            //   icon: Icon(
-            //     widget.isSecured ? Icons.remove_red_eye : Icons.visibility_off,
-            //   ),
-            // ),
+            suffixIcon: widget.sufIcon,
             hintText: widget.hintText,
             fillColor: AppColors.grey3,
             filled: true,

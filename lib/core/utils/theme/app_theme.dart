@@ -5,6 +5,9 @@ class AppTheme {
   static ThemeData get mainTheme => ThemeData(
         // scaffoldBackgroundColor: AppColors.white,
         fontFamily: 'OpenSans',
+        progressIndicatorTheme: ProgressIndicatorThemeData(
+          color: AppColors.primaryColor,
+        ),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: AppColors.grey2,

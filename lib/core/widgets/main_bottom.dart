@@ -35,7 +35,9 @@ class MainBottom extends StatelessWidget {
         onPressed: onTap,
         child: isLeading
             ? Center(
-                child: CircularProgressIndicator.adaptive(),
+                child: CircularProgressIndicator.adaptive(
+                  backgroundColor: AppColors.white,
+                ),
               )
             : Text(
                 text!,

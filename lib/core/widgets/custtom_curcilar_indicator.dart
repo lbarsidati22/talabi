@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
 
-class CusttomCurcilarIndicator extends StatelessWidget {
-  const CusttomCurcilarIndicator({super.key});
+class CusttomSicrolIndicator extends StatelessWidget {
+  const CusttomSicrolIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {
