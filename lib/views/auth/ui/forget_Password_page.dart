@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talabi/core/widgets/cusstom_appbar.dart';
 import 'package:talabi/core/widgets/label_with_text_feild.dart';
 import 'package:talabi/core/widgets/main_bottom.dart';
 
@@ -14,7 +15,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: buildCustomAppBar(context, 'Forget Paasword'),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

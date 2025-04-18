@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
 import 'package:talabi/core/widgets/label_with_text_feild.dart';
 import 'package:talabi/core/widgets/main_bottom.dart';
+import 'package:talabi/core/widgets/social_login.dart';
 import 'package:talabi/views/auth/cubit/auth_cubit.dart';
 import 'package:talabi/views/nav_bar/ui/nav_bar.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
@@ -126,6 +127,45 @@ class _RegisterPageState extends State<RegisterPage> {
                                         } else {}
                                       },
                                     ),
+                              SizedBox(
+                                height: size.height * 0.021,
+                              ),
+                              Text(
+                                '----------------------- OR ----------------------',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                              SizedBox(
+                                height: size.height * 0.021,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SocialLogin(
+                                    onTap: () {},
+                                    logo: 'assets/images/facebooklogo.png',
+                                    text: 'Facebook',
+                                    backColor: AppColors.faceBook,
+                                  ),
+                                  // SizedBox(
+                                  //   width: size.width * 0.03,
+                                  // ),
+                                  SocialLogin(
+                                    onTap: () {},
+                                    logo: 'assets/images/googlelogo.png',
+                                    text: 'Google',
+                                    backColor: AppColors.google,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: size.height * 0.021,
+                              ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -151,37 +191,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                             fontWeight: FontWeight.bold,
                                             color: AppColors.primaryColor,
                                           ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Countine with google',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleMedium!
-                                        .copyWith(
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: AppColors.primaryColor,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                    ),
-                                    onPressed: () {},
-                                    child: Icon(
-                                      Icons.chevron_right_sharp,
-                                      color: AppColors.white,
-                                      size: 28,
                                     ),
                                   ),
                                 ],

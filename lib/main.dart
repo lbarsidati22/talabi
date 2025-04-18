@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:talabi/config.dart';
+import 'package:talabi/core/utils/app_constants.dart';
 import 'package:talabi/core/utils/theme/app_theme.dart';
 import 'package:talabi/views/auth/cubit/auth_cubit.dart';
 import 'package:talabi/views/auth/ui/login_page.dart';
@@ -27,9 +28,10 @@ class Talabi extends StatelessWidget {
       create: (context) => AuthCubit(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Talabi',
+        title: AppConstants.appName,
         theme: AppTheme.mainTheme,
-        home: client.auth.currentUser != null ? NavBar() : LoginPage(),
+        home: LoginPage(),
+        //  client.auth.currentUser != null ? NavBar() :
       ),
     );
   }
