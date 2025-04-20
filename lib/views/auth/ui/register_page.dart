@@ -120,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       onTap: () {
                                         if (formKey.currentState!.validate()) {
                                           authCubit.register(
-                                            userName: userNameController.text,
+                                            name: userNameController.text,
                                             email: emailController.text,
                                             password: passwordController.text,
                                           );

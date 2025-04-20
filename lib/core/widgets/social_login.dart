@@ -40,8 +40,8 @@ class SocialLogin extends StatelessWidget {
               ),
               Text(
                 text,
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.w500,
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      fontWeight: FontWeight.w600,
                       color: AppColors.white,
                     ),
               ),

@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
 
 class CustomRowBtn extends StatelessWidget {
-  const CustomRowBtn({
+  CustomRowBtn({
     super.key,
     this.onTap,
     required this.icon,
-    required this.text,
+    this.text,
+    this.isLeading = false,
   });
 
   final void Function()? onTap;
   final IconData icon;
-  final String text;
+  final String? text;
+  bool isLeading;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -32,13 +34,17 @@ class CustomRowBtn extends StatelessWidget {
                 icon,
                 color: AppColors.white,
               ),
-              Text(
-                text,
-                style: const TextStyle(
-                  color: AppColors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              isLeading
+                  ? Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    )
+                  : Text(
+                      text!,
+                      style: const TextStyle(
+                        color: AppColors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
               const Icon(
                 Icons.arrow_forward_ios,
                 color: AppColors.white,

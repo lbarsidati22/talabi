@@ -43,6 +43,7 @@ dependencies:
   top_snackbar_flutter: ^3.2.0
   awesome_snackbar_content: ^0.1.5
   google_sign_in: ^6.3.0
+  dio: ^5.8.0+1
 
 dev_dependencies:
   flutter_test:

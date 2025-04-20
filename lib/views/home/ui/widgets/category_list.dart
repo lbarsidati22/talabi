@@ -26,7 +26,7 @@ class CategoriesList extends StatelessWidget {
           return Column(
             children: [
               CircleAvatar(
-                radius: 25,
+                radius: size.height * 0.030,
                 backgroundColor: AppColors.primaryColor,
                 child: Icon(
                   category.icon,
@@ -35,7 +35,7 @@ class CategoriesList extends StatelessWidget {
               ),
               Text(
                 category.text,
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       fontWeight: FontWeight.w500,
                     ),
               ),

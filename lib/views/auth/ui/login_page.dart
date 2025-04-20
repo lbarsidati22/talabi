@@ -30,7 +30,6 @@ class _LoginPageState extends State<LoginPage> {
     final size = MediaQuery.sizeOf(context);
     final authCubit = BlocProvider.of<AuthCubit>(context);
     return BlocConsumer<AuthCubit, AuthState>(
-      listenWhen: (previous, current) => current is LoginError,
       listener: (context, state) {
         if (state is LoginSuccess) {
           Navigator.pushReplacement(
