@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
 
+// ignore: must_be_immutable
 class CustomRowBtn extends StatelessWidget {
   CustomRowBtn({
     super.key,

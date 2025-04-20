@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:talabi/core/widgets/prudact_item.dart';
 import 'package:talabi/views/home/ui/widgets/product_list.dart';
 
 class FavoritePage extends StatelessWidget {

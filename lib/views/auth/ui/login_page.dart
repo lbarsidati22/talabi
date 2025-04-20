@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
-import 'package:talabi/core/widgets/custtom_curcilar_indicator.dart';
 import 'package:talabi/core/widgets/label_with_text_feild.dart';
 import 'package:talabi/core/widgets/main_bottom.dart';
 import 'package:talabi/core/widgets/social_login.dart';

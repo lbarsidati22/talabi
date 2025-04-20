@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:talabi/core/utils/app_constants.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
 import 'package:talabi/core/widgets/main_bottom.dart';
 
@@ -25,11 +27,12 @@ class PrudactItem extends StatelessWidget {
                   bottomRight: Radius.circular(12),
                   topRight: Radius.circular(12),
                 ),
-                child: Image(
+                child: CachedNetworkImage(
                   height: size.height * 0.25,
                   fit: BoxFit.cover,
                   width: double.infinity,
-                  image: AssetImage('assets/images/logo.png'),
+                  imageUrl:
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/640px-PNG_transparency_demonstration_1.png',
                 ),
               ),
               Positioned(

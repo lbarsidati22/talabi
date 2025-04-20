@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
 import 'package:talabi/views/home/ui/widgets/category_list.dart';
-import 'package:talabi/core/widgets/prudact_item.dart';
 import 'package:talabi/views/home/ui/widgets/product_list.dart';
 
 class HomePage extends StatelessWidget {
