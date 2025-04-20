@@ -43,7 +43,9 @@ class ProductList extends StatelessWidget {
                             PrudactDetailsPage(),
                           );
                         },
-                        child: PrudactItem());
+                        child: PrudactItem(
+                          product: products[index],
+                        ));
                   });
         },
       ),

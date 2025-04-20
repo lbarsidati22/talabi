@@ -1,12 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:talabi/core/model/product_model/product_model.dart';
 import 'package:talabi/core/utils/app_constants.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
+import 'package:talabi/core/widgets/custtom_curcilar_indicator.dart';
 import 'package:talabi/core/widgets/main_bottom.dart';
 
 class PrudactItem extends StatelessWidget {
+  final ProductModel product;
   const PrudactItem({
     super.key,
+    required this.product,
   });
 
   @override
@@ -31,8 +35,12 @@ class PrudactItem extends StatelessWidget {
                   height: size.height * 0.25,
                   fit: BoxFit.cover,
                   width: double.infinity,
-                  imageUrl:
-                      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/640px-PNG_transparency_demonstration_1.png',
+                  imageUrl: product.imageUrl ?? AppConstants.imgNull,
+                  placeholder: (context, url) => const SizedBox(
+                    height: 200,
+                    child: CusttomSicrolIndicator(),
+                  ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
               Positioned(
@@ -47,7 +55,7 @@ class PrudactItem extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '10% OFF',
+                      '${product.sale}% OFF',
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             color: AppColors.white,
                           ),
@@ -75,7 +83,7 @@ class PrudactItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Prudact tree',
+                      product.productName ?? 'No Name',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             color: AppColors.black,
                             fontWeight: FontWeight.w600,
@@ -96,15 +104,37 @@ class PrudactItem extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Text(
-                          '150 MRU',
+                        Text.rich(
+                          TextSpan(
+                            text: product.price,
+                            children: [
+                              TextSpan(
+                                text: '  MRU',
+                                style: TextStyle(
+                                  color: Colors.green,
+                                ),
+                              ),
+                            ],
+                          ),
+                          //'${product.price} MRU',
                           style:
                               Theme.of(context).textTheme.titleMedium!.copyWith(
                                     fontWeight: FontWeight.w600,
                                   ),
                         ),
-                        Text(
-                          '190 MRU',
+                        Text.rich(
+                          TextSpan(
+                            text: product.oldPrice,
+                            children: [
+                              TextSpan(
+                                text: '  MRU',
+                                style: TextStyle(
+                                  color: Colors.green,
+                                ),
+                              ),
+                            ],
+                          ),
+                          // '${product.oldPrice} MRU',
                           style: TextStyle(
                             decoration: TextDecoration.lineThrough,
                           ),
