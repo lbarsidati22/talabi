@@ -13,7 +13,6 @@ import 'package:talabi/views/nav_bar/ui/nav_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  debugDefaultTargetPlatformOverride = TargetPlatform.android;
   await Supabase.initialize(
     url: Config.supabaseUrl,
     anonKey: Config.supabaseAnonKey,
