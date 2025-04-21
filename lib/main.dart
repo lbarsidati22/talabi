@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:talabi/config.dart';
@@ -18,7 +19,14 @@ void main() async {
     anonKey: Config.supabaseAnonKey,
   );
   Bloc.observer = MyObserver();
-  runApp(const Talabi());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((_) {
+    runApp(Talabi());
+  });
+
+  // runApp(const Talabi());
 }
 
 class Talabi extends StatelessWidget {

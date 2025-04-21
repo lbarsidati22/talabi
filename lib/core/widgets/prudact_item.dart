@@ -5,6 +5,8 @@ import 'package:talabi/core/utils/app_constants.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
 import 'package:talabi/core/widgets/custtom_curcilar_indicator.dart';
 import 'package:talabi/core/widgets/main_bottom.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class PrudactItem extends StatelessWidget {
   final ProductModel product;
@@ -150,7 +152,15 @@ class PrudactItem extends StatelessWidget {
                       height: size.height * 0.061,
                       width: 100,
                       text: 'Buy',
-                      onTap: () {},
+                      onTap: () {
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.error(
+                            message:
+                                'Due to the tight schedule, we were unable to add purchase services.',
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),

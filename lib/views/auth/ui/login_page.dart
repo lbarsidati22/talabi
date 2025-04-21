@@ -164,7 +164,15 @@ class _LoginPageState extends State<LoginPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   SocialLogin(
-                                    onTap: () {},
+                                    onTap: () {
+                                      showTopSnackBar(
+                                        Overlay.of(context),
+                                        CustomSnackBar.error(
+                                          message:
+                                              'Due to the tight schedule we were unable to add the record from Google and Facebook.',
+                                        ),
+                                      );
+                                    },
                                     logo: 'assets/images/facebooklogo.png',
                                     text: 'Facebook',
                                     backColor: AppColors.faceBook,
@@ -173,7 +181,15 @@ class _LoginPageState extends State<LoginPage> {
                                   //   width: size.width * 0.03,
                                   // ),
                                   SocialLogin(
-                                    onTap: () {},
+                                    onTap: () {
+                                      showTopSnackBar(
+                                        Overlay.of(context),
+                                        CustomSnackBar.error(
+                                          message:
+                                              'Due to the tight schedule we were unable to add the record from Google and Facebook.',
+                                        ),
+                                      );
+                                    },
                                     logo: 'assets/images/googlelogo.png',
                                     text: 'Google',
                                     backColor: AppColors.google,
