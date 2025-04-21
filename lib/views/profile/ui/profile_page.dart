@@ -18,130 +18,127 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authCubit = BlocProvider.of<AuthCubit>(context);
-    return BlocProvider(
-      create: (context) => AuthCubit()..getUserData(),
-      child: BlocConsumer<AuthCubit, AuthState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return state is GetUserDataLeading
-              ? CusttomSicrolIndicator()
-              : Card(
-                  color: AppColors.white,
-                  margin: const EdgeInsets.all(24),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(16),
-                    ),
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return state is GetUserDataLeading
+            ? CusttomSicrolIndicator()
+            : Card(
+                color: AppColors.white,
+                margin: const EdgeInsets.all(24),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        const CircleAvatar(
-                          radius: 55,
-                          backgroundColor: AppColors.primaryColor,
-                          foregroundColor: AppColors.white,
-                          child: Icon(
-                            Icons.person,
-                            size: 45,
-                          ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      const CircleAvatar(
+                        radius: 55,
+                        backgroundColor: AppColors.primaryColor,
+                        foregroundColor: AppColors.white,
+                        child: Icon(
+                          Icons.person,
+                          size: 45,
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          authCubit.userModel!.name,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          authCubit.userModel!.email,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        CustomRowBtn(
-                          icon: Icons.person,
-                          text: 'Edit Name',
-                          onTap: () {
-                            Navigator.of(context).push(
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        authCubit.userModel!.name ?? 'user',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        authCubit.userModel!.email ?? 'user email',
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomRowBtn(
+                        icon: Icons.person,
+                        text: 'Edit Name',
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => EditNameView(),
+                            ),
+                          );
+                        },
+                      ),
+                      CustomRowBtn(
+                        icon: Icons.shopping_cart,
+                        text: 'MyOrder',
+                        onTap: () {
+                          navigateTo(
+                            context,
+                            MyOrdersViwe(),
+                          );
+                        },
+                      ),
+                      // CustomRowBtn(
+                      //   icon: Icons.logout,
+                      //   onTap: () async {
+                      //     await authCubit.logOut();
+                      //   },
+                      // ),
+                      Spacer(
+                        flex: 2,
+                      ),
+                      BlocConsumer<AuthCubit, AuthState>(
+                        listenWhen: (previous, current) =>
+                            current is LogOutError ||
+                            current is LogOutLeading ||
+                            current is LogOutSuccess,
+                        listener: (context, state) {
+                          if (state is LogOutSuccess) {
+                            Navigator.pushReplacement(
+                              context,
                               MaterialPageRoute(
-                                builder: (context) => EditNameView(),
+                                builder: (context) => LoginPage(),
                               ),
                             );
-                          },
-                        ),
-                        CustomRowBtn(
-                          icon: Icons.shopping_cart,
-                          text: 'MyOrder',
-                          onTap: () {
-                            navigateTo(
-                              context,
-                              MyOrdersViwe(),
+                          }
+                          if (state is LogOutError) {
+                            showTopSnackBar(
+                              Overlay.of(context),
+                              CustomSnackBar.error(
+                                message: state.message,
+                              ),
                             );
-                          },
-                        ),
-                        // CustomRowBtn(
-                        //   icon: Icons.logout,
-                        //   onTap: () async {
-                        //     await authCubit.logOut();
-                        //   },
-                        // ),
-                        Spacer(
-                          flex: 2,
-                        ),
-                        BlocConsumer<AuthCubit, AuthState>(
-                          listenWhen: (previous, current) =>
-                              current is LogOutError ||
-                              current is LogOutLeading ||
-                              current is LogOutSuccess,
-                          listener: (context, state) {
-                            if (state is LogOutSuccess) {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LoginPage(),
-                                ),
-                              );
-                            }
-                            if (state is LogOutError) {
-                              showTopSnackBar(
-                                Overlay.of(context),
-                                CustomSnackBar.error(
-                                  message: state.message,
-                                ),
-                              );
-                            }
-                          },
-                          bloc: authCubit,
-                          buildWhen: (previous, current) =>
-                              current is LogOutError ||
-                              current is LogOutLeading ||
-                              current is LogOutSuccess,
-                          builder: (context, state) {
-                            if (state is LogOutLeading) {
-                              return MainBottom(
-                                // text: 'LogOut',
-                                isLeading: true,
-                                onTap: () {},
-                              );
-                            }
+                          }
+                        },
+                        bloc: authCubit,
+                        buildWhen: (previous, current) =>
+                            current is LogOutError ||
+                            current is LogOutLeading ||
+                            current is LogOutSuccess,
+                        builder: (context, state) {
+                          if (state is LogOutLeading) {
                             return MainBottom(
-                              text: 'LogOut',
-                              onTap: () async {
-                                await authCubit.logOut();
-                              },
+                              // text: 'LogOut',
+                              isLeading: true,
+                              onTap: () {},
                             );
-                          },
-                        ),
-                      ],
-                    ),
+                          }
+                          return MainBottom(
+                            text: 'LogOut',
+                            onTap: () async {
+                              await authCubit.logOut();
+                            },
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                );
-        },
-      ),
+                ),
+              );
+      },
     );
   }
 }

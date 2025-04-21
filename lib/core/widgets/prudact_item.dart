@@ -82,12 +82,17 @@ class PrudactItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      product.productName ?? 'No Name',
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            color: AppColors.black,
-                            fontWeight: FontWeight.w600,
-                          ),
+                    Expanded(
+                      child: Text(
+                        softWrap: true,
+                        product.productName ?? 'No Name',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              color: AppColors.black,
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
                     ),
                     IconButton(
                       onPressed: () {},

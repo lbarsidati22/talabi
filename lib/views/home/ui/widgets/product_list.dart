@@ -40,7 +40,9 @@ class ProductList extends StatelessWidget {
                         onTap: () {
                           navigateTo(
                             context,
-                            PrudactDetailsPage(),
+                            PrudactDetailsPage(
+                              product: products[index],
+                            ),
                           );
                         },
                         child: PrudactItem(
