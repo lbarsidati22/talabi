@@ -25,7 +25,9 @@ class FavoritePage extends StatelessWidget {
         SizedBox(
           height: size.height * 0.012,
         ),
-        ProductList(),
+        ProductList(
+          isFavoritePage: true,
+        ),
       ],
     );
   }

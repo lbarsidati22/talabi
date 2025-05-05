@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:talabi/core/utils/theme/app_colors.dart';
 import 'package:talabi/views/favorite/ui/favorite_page.dart';
-import 'package:talabi/views/home/ui/home_page.dart';
+import 'package:talabi/views/home/ui/screens/home_page.dart';
 import 'package:talabi/views/nav_bar/logic/cubit/nav_bar_cubit.dart';
 import 'package:talabi/views/nav_bar/logic/cubit/nav_bar_state.dart';
 import 'package:talabi/views/profile/ui/profile_page.dart';

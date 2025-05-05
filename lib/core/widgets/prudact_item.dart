@@ -10,8 +10,12 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class PrudactItem extends StatelessWidget {
   final ProductModel product;
+  final VoidCallback? onTap;
+  final bool isFavorite;
   const PrudactItem({
     super.key,
+    this.onTap,
+    required this.isFavorite,
     required this.product,
   });
 
@@ -97,10 +101,12 @@ class PrudactItem extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: onTap,
                       icon: Icon(
                         Icons.favorite,
-                        color: AppColors.primaryColor,
+                        color: isFavorite
+                            ? AppColors.primaryColor
+                            : AppColors.grey,
                         size: 32,
                       ),
                     ),

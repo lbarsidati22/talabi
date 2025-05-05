@@ -9,21 +9,34 @@ import 'package:talabi/views/prudact_details/ui/prudact_details_page.dart';
 
 class ProductList extends StatelessWidget {
   final bool? shrinkWrap;
+  final String? quirySearch;
+  final String? category;
   final ScrollPhysics? physics;
+  final bool isFavoritePage;
   const ProductList({
     this.shrinkWrap,
+    this.isFavoritePage = false,
     this.physics,
+    this.quirySearch,
+    this.category,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..getProducts(),
+      create: (context) =>
+          HomeCubit()..getProducts(quiry: quirySearch, category: category),
       child: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {
-          List<ProductModel> products = context.read<HomeCubit>().products;
+          List<ProductModel> products = quirySearch != null
+              ? context.read<HomeCubit>().searchProducts
+              : category != null
+                  ? context.read<HomeCubit>().categoryProucts
+                  : isFavoritePage
+                      ? context.read<HomeCubit>().favoriteProductList
+                      : context.read<HomeCubit>().products;
           return state is GetDataLeading
               ? CusttomSicrolIndicator()
               : ListView.separated(
@@ -46,6 +59,21 @@ class ProductList extends StatelessWidget {
                           );
                         },
                         child: PrudactItem(
+                          isFavorite: context
+                              .read<HomeCubit>()
+                              .checkIsFavorite(products[index].productId!),
+                          onTap: () {
+                            bool isFavorite = context
+                                .read<HomeCubit>()
+                                .checkIsFavorite(products[index].productId!);
+                            isFavorite
+                                ? context
+                                    .read<HomeCubit>()
+                                    .removeFavorite(products[index].productId!)
+                                : context
+                                    .read<HomeCubit>()
+                                    .addToFavorite(products[index].productId!);
+                          },
                           product: products[index],
                         ));
                   });
